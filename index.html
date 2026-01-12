@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" class="theme-dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Addanki | Portfolio</title>
+  <meta name="description" content="Nitin Addanki — Strategy & Entrepreneurship | CU Boulder" />
+  <link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="favicon-dark.ico" media="(prefers-color-scheme: dark)">
+</head>
+
+<body>
+  <!-- ================= ENTRANCE ================= -->
+  <div id="entrance" class="entrance">
+    <button class="icon-btn entrance-theme" id="entranceThemeBtn" aria-label="Toggle theme">
+      <span class="icon" data-icon="theme"></span>
+    </button>
+
+    <div class="entrance-inner">
+      <!-- Signature animation -->
+      <div class="sig-wrap" aria-hidden="true">
+        <svg viewBox="-80 -80 1184 1184" class="sig-svg">
+          <path
+pathLength="1000"
+           d="M 331.26197,824.63088 371.7887,155.0588 c 0,0 72.24331,680.14427 225.54007,676.62021 89.80868,-2.06457 125.42778,-266.4467 106.63548,-448.1971 C 690.67948,254.99784 644.03265,190.72664 597.32878,188.5374 536.27708,185.67561 476.33682,211.58499 359.89671,323.33387 309.24067,371.94905 182.44321,492.7134 183.25131,602.61488 185.01334,842.2512 984.05117,169.42509 932.11482,218.49195"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="26"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="sig-path"
+          />
+        </svg>
+      </div>
+
+      <div class="entrance-copy fade-in" style="animation-delay: 1.35s">
+        <h1 class="entrance-title">Nitin Addanki</h1>
+        <!-- Enter + Sound pill (same row) -->
+        <div class="entrance-actions fade-in-enter">
+          <button id="enterBtn" class="btn btn-primary">
+            Enter Site
+          </button>
+
+          <!-- Sound toggle (moved here) -->
+          <button class="sound-toggle" id="entranceSoundBtn" type="button" aria-label="Toggle sound preference">
+            <span class="sound-dot" aria-hidden="true"></span>
+            <span id="entranceSoundText">Sound on</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SITE ================= -->
+  <div id="site" class="site hidden">
+    <!-- ================= NAV ================= -->
+    <nav class="nav">
+      <div class="container nav-inner">
+        <button class="brand" data-scroll="home">Nitin Addanki</button>
+
+        <div class="nav-links">
+          <button class="nav-link" data-scroll="home">Home</button>
+          <button class="nav-link" data-scroll="about">About</button>
+          <button class="nav-link" data-scroll="education">Education</button>
+          <button class="nav-link" data-scroll="projects">Projects</button>
+          <button class="nav-link" data-scroll="work">Work</button>
+          <button class="nav-link" data-scroll="hobbies">Hobbies</button>
+          <button class="nav-link" data-scroll="contact">Contact</button>
+
+          <a class="btn btn-outline btn-sm" href="Nitin Addanki Resume.pdf" target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+            <span class="icon" data-icon="theme"></span>
+          </button>
+        </div>
+
+        <button class="icon-btn nav-mobile-btn" id="menuBtn" aria-label="Open menu">
+          <span class="icon" data-icon="menu"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu hidden" id="mobileMenu">
+        <div class="mobile-menu-inner container">
+          <button class="mobile-link" data-scroll="home">Home</button>
+          <button class="mobile-link" data-scroll="about">About</button>
+          <button class="mobile-link" data-scroll="education">Education</button>
+          <button class="mobile-link" data-scroll="projects">Projects</button>
+          <button class="mobile-link" data-scroll="work">Work</button>
+          <button class="mobile-link" data-scroll="hobbies">Hobbies</button>
+          <button class="mobile-link" data-scroll="contact">Contact</button>
+
+          <a class="mobile-link strong" href="Nitin Addanki Resume.pdf" target="_blank" rel="noopener noreferrer">
+            Download Resume (PDF)
+          </a>
+
+          <button class="mobile-link theme-row" id="mobileThemeBtn">
+            <span class="icon" data-icon="theme"></span>
+            <span id="themeLabel">Light Mode</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO (QUOTE + HEADSHOT) ================= -->
+    <section id="home" class="section hero hero-split">
+      <div class="container hero-split-inner">
+        <div class="hero-left">
+          <h1 class="h1 anim slide-up" data-animate>
+            Live to learn.<br>Learn to live.
+          </h1>
+
+          <div class="cta-row anim slide-up" data-animate>
+            <button class="btn btn-primary" data-scroll="about">About Me</button>
+            <a class="btn btn-outline" href="Nitin Addanki Resume.pdf" target="_blank" rel="noopener noreferrer">
+              Download Resume
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right anim slide-left" data-animate>
+          <div class="hero-photo">
+            <img
+              src="headshot.jpg"
+              alt="Portrait of Nitin Addanki"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT (2x2 layout) ================= -->
+    <section id="about" class="section section-muted">
+      <div class="container about-grid2">
+        <div class="about-text panel anim slide-up" data-animate>
+          <p class="kicker">About Me</p>
+          <h2 class="h2 mt-6">Creating value through authenticity</h2>
+
+          <div class="prose mt-6">
+            <p class="lead">My name is Nitin. It's like kitten with an N.</p>
+            <p>
+              I am a senior studying Strategy & Entrepreneurship at CU Boulder with career interests in sports,
+              entertainment, and education.
+            </p>
+            <p>
+              I grew up in the suburbs of Chicago and spent most of my time being slandered for being a Packers fan.
+              It wasn't easy being different but I learned to be authentic. I eventually carried this authenticity
+              into my creative ventures and projects.
+            </p>
+            <p>
+              From snack businesses to art stores to videography, I've tried it all. Along the way, I've learned
+              plenty of lessons, but one that stuck with me most is to keep pushing myself to fail, learn, and grow.
+            </p>
+            <p>
+              My goal is to use what I've learned to create and share value with others while working on something
+              I'm truly passionate about.
+            </p>
+            <p class="italic">
+              If you ever want to connect, collaborate, or just chat, feel free to reach out through my contact page
+              or follow my socials :)
+            </p>
+          </div>
+        </div>
+
+        <div class="about-photoWrap anim slide-left" data-animate>
+          <div class="about-photo">
+            <img
+              src="about-photo.jpg"
+              alt="About photo"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+        </div>
+
+        <div class="about-underLeft anim slide-up" data-animate>
+          <div class="card mini-card equal-card">
+            <div class="mini-card-top">
+              <div class="mini-title">My song of the month</div>
+              <div class="mini-sub">Frank Sinatra — My Way</div>
+            </div>
+
+            <div class="mini-photo">
+              <img
+                src="song-photo.jpg"
+                alt="Song of the month image"
+                loading="lazy"
+                decoding="async"
+                onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+              />
+              <div class="missing-note"> <strong> </strong></div>
+            </div>
+
+            <div class="mini-body">
+              <p class="card-text">
+                My song of the month. Frank Sinatra’s <em>"My Way"</em> is an iconic song that reflects on following one’s own path, even when it means going against the grain. This is one of my favorite songs because it summarizes how I want to live life by staying true to myself and having resilience. It also reminds me that we only get one life to do things our way.
+              </p>
+
+              <div class="music-row">
+                <button id="musicToggle" class="btn btn-outline btn-sm" type="button">Pause</button>
+                <span id="musicStatus" class="music-status">Playing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-underRight anim slide-up" data-animate>
+          <div class="card mini-card equal-card">
+            <div class="mini-card-top">
+              <div class="mini-title">Art piece (current)</div>
+              <div class="mini-sub">A visual that inspires my style</div>
+            </div>
+            <div class="mini-art">
+              <img
+                src="art-piece.jpg"
+                alt="Art piece"
+                loading="lazy"
+                decoding="async"
+                onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+              />
+              <div class="missing-note"> <strong> </strong></div>
+            </div>
+            <div class="mini-body">
+              <p class="card-text">
+                Dance by Keith Haring captures the scene of human connection through bold colors and animated movements. To me these figures seem like they are celebrating in their simple dance forms. I chose this piece because I’ve recently been trying to surround myself around feeling more positive minded people.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section id="education" class="section">
+      <div class="container narrow">
+        <div class="panel anim slide-up" data-animate>
+          <h3 class="h3">Education</h3>
+
+          <h4 class="h4 mt-6">CU Boulder</h4>
+          <p class="p-lg">Leeds School of Business — Strategy & Entrepreneurship</p>
+
+          <p class="panel-text">
+            Through studying at Leeds, I’ve learned not only what business is, but how to build and grow one.
+            I developed a strong foundation across finance, marketing, and operations—so I can apply what I learn
+            to real industries and companies.
+          </p>
+
+          <h4 class="h4 mt-6">Certifications</h4>
+
+          <div class="dash-list panel-text">
+            <p>— <strong>Google Digital Marketing & E-Commerce:</strong> Campaign planning, SEO/SEM, analytics, e-commerce strategy</p>
+            <p>— <strong>HubSpot Social Media Strategy:</strong> Social campaigns, calendars, engagement systems</p>
+            <p>— <strong>HubSpot Content Marketing:</strong> Content that attracts, retains, converts (measurable)</p>
+          </div>
+
+          <h4 class="h4 mt-6">Leadership</h4>
+          <p class="panel-text">
+            <strong>Dale Carnegie:</strong> Leadership + communication training (confidence, persuasion, EQ). Awarded Most Valuable Leader.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="section section-muted">
+      <div class="container narrow stack">
+        <div class="card anim slide-up" data-animate>
+          <h3 class="h3">Projects</h3>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img
+              src="project-brer.jpg"
+              alt="Br'er project preview"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">Br’er</h4>
+            <p class="card-text">
+              Br’er is a venture I’m currently developing with a team as part of a class project that we plan to continue beyond the course. We’re building a nicotine replacement device designed to help people transition away from nicotine addiction in a safer and more sustainable way. So far, we’ve defined the problem, validated demand through research and data, and are now working on early prototypes and brand development. This project has taught me how to turn ideas into real ventures by using data, customer insight, and business fundamentals.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img
+              src="project-omframe.jpg"
+              alt="OmFrame preview"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">OmFrame</h4>
+            <p class="card-text">
+              OmFrame was an online cultural art store I created and ran myself. I designed the artwork, built the Shopify site, and ran ads on Facebook and Pinterest to bring in customers. Although the business brought in some revenue, I realized that the product didn’t provide enough value relative to cost, which limited growth. This experience taught me the importance of solving a real problem and having a clear value proposition before developing products.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img
+              src="project-snack.jpg"
+              alt="Snack-A-Week preview"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">Snack A Week</h4>
+            <p class="card-text">
+              Snack A Week was a customizable snack box service that I started for parents to save time and money while providing snacks kids genuinely enjoyed. I sold over 500 ready-to-go snack boxes, partnered with schools, and donated boxes to a local food pantry. This was my first real experience running a business which pushed me to talk with customers, handle fulfillment and market products on my own. The biggest lesson I took away was to take initiative and learn along the way, rather than waiting for the perfect moment to start.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section id="work" class="section">
+      <div class="container narrow stack">
+        <div class="panel anim slide-up" data-animate>
+          <h3 class="h3">Work Experience</h3>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Nordstrom Rack — Sales Experience Rep</h4>
+          <p class="panel-text">
+            Most recently, I worked at Nordstrom Rack as a Sales Experience Rep. My work included helping customers at checkout to provide a fast and friendly experience. I also worked with the back-of-house and floor teams to help keep the store running smoothly. A key part of the role involved offering Nordstrom credit cards, which gave me real hands-on sales experience. Over time, I learned how to communicate value effectively and became one of the top credit card sellers in the store.
+          </p>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Blonde Boutique — Marketing Intern</h4>
+          <p class="panel-text">
+            At Blonde Boutique, I worked in social media, web design, and e-commerce to help grow the brand’s outreach. I created social media campaigns on Instagram, Facebook, and TikTok to boost visibility and engagement. On the website side, I updated product photos, descriptions, and stock levels on Shopify to improve the overall shopping experience. This role taught me how cohesiveness and appeal in branding create customer value and drive sales.
+          </p>
+          <a href="https://shopblondeboutique.com" target="_blank" rel="noopener noreferrer">Website I worked on: shopblondeboutique.com</a>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Good Roots — Store Assistant</h4>
+          <p class="panel-text">
+            As a store assistant, I supported daily operations by managing inventory, fulfillment, and store organization. I created wholesale product catalogs and also redesigned the Squarespace website for better functionality to streamline processes for both customers and owners. This role gave me insight into the behind-the-scenes systems that keep businesses running smoothly.
+          </p>
+          <a href="https://shopgoodroots.com" target="_blank" rel="noopener noreferrer">Website I worked on: shopgoodroots.com</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOBBIES ================= -->
+    <section id="hobbies" class="section section-muted">
+      <div class="container narrow stack">
+        <div class="card anim slide-up" data-animate>
+          <h3 class="h3">Hobbies</h3>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img
+              src="hobby-travel.jpg"
+              alt="Travel"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Travel</h4>
+            <p class="card-text">
+              I love exploring new places and experiencing different cultures when I travel. I like to wander without a set plan or destination just to observe, learn, and take in the environment as it is. Traveling has shown me how big the world is and how much there is to learn from other people and ways of living. In the future, I hope to work in the education sector and support underprivileged communities abroad. Fun fact: one place I’ve always wanted to live is Hawai‘i.
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img
+              src="hobby-volleyball.jpg"
+              alt="Volleyball"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Volleyball</h4>
+            <p class="card-text">
+              Volleyball has been a part of my life for the past seven years. I’ve played in club, school, and for fun, and each stage has given me something different. I’ve been fortunate enough to play on great teams, win a state championship, and finish second at nationals. Through the wins, losses, an ACL tear, and countless hours of practice, volleyball taught me resilience, teamwork, and how to show up for others. I hope to keep this sport in my life for as long as possible so I can stay active and continue meeting new communities.
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img
+              src="hobby-video.jpg"
+              alt="Videography"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');"
+            />
+            <div class="missing-note"> <strong> </strong></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Videography</h4>
+            <p class="card-text">
+              When I was younger, I started making silly videos for family events and school projects, but over time I gained a genuine appreciation for filmmaking and the entertainment industry. I’ve worked on many video projects since then, and it’s become one of my favorite creative outlets. One day if the opportunity comes, I’d love to create films or projects that inspire or impact others in a meaningful way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section">
+      <div class="container contact">
+        <h2 class="h1 anim slide-up" data-animate>Let's connect</h2>
+        <p class="p-lg anim slide-up" data-animate>Feel free to reach out!</p>
+
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:addankinitin@gmail.com">
+            <div class="contact-title">Email</div>
+            <div class="contact-sub">addankinitin@gmail.com</div>
+          </a>
+
+          <a class="contact-card" href="tel:6307850001">
+            <div class="contact-title">Phone</div>
+            <div class="contact-sub">630-785-0001</div>
+          </a>
+
+          <a class="contact-card"
+             href="https://linkedin.com/in/nitin-addanki"
+             target="_blank" rel="noopener noreferrer">
+            <div class="contact-title">LinkedIn</div>
+            <div class="contact-sub"><strong>View profile</strong></div>
+          </a>
+        </div>
+
+        <footer class="footer">© 2026 Nitin Addanki</footer>
+      </div>
+    </section>
+
+    <!-- ===== Sticky music player ===== -->
+    <div class="player" id="player" aria-label="Music controls">
+      <div class="player-inner">
+        <div class="player-left">
+          <img class="player-art" src="album-cover.png" alt="Album cover" loading="lazy" decoding="async"
+               onerror="this.src='logo.png';" />
+        </div>
+
+        <div class="player-mid">
+          <div class="player-title">My Way — Frank Sinatra</div>
+          <div class="player-meta">
+            <span id="playerCur">0:00</span>
+            <span class="dot">•</span>
+            <span id="playerDur">--:--</span>
+          </div>
+          <input id="playerSeek" class="player-seek" type="range" min="0" max="1000" value="0" />
+        </div>
+
+        <div class="player-right">
+          <button class="pbtn" id="playerPlay" aria-label="Play/Pause">
+            <span class="picon" id="playerPlayIcon"></span>
+          </button>
+          <button class="pbtn" id="playerMute" aria-label="Mute/Unmute">
+            <span class="picon" id="playerMuteIcon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgAudio" preload="auto" loop>
+    <source src="my-way.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

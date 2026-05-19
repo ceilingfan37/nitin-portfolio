@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en" class="theme-dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Addanki | Portfolio</title>
+  <meta name="description" content="Nitin Addanki — Strategy & Entrepreneurship | CU Boulder" />
+  <link rel="icon" href="favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="favicon-dark.ico" media="(prefers-color-scheme: dark)">
+<style>
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; }
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.65;
+}
+
+/* THEME TOKENS */
+:root{
+  --bg:#0a0a0a;
+  --bg2:#0f1012;
+  --panel: rgba(255,255,255,.07);
+  --panel2: rgba(255,255,255,.04);
+  --border: rgba(255,255,255,.10);
+  --border2: rgba(255,255,255,.16);
+  --text:#ffffff;
+  --muted: rgba(255,255,255,.76);
+  --muted2: rgba(255,255,255,.56);
+  --shadow: 0 16px 40px rgba(0,0,0,.38);
+  --radius: 28px;
+  --radius2: 18px;
+  --container: 1120px;
+  --navH: 72px;
+}
+html.theme-light{
+  --bg:#ffffff;
+  --bg2:#f6f7f9;
+  --panel: rgba(0,0,0,.05);
+  --panel2: rgba(0,0,0,.03);
+  --border: rgba(0,0,0,.10);
+  --border2: rgba(0,0,0,.14);
+  --text:#0f0f10;
+  --muted: rgba(0,0,0,.70);
+  --muted2: rgba(0,0,0,.52);
+  --shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+
+body{ background:var(--bg); color:var(--text); }
+.container{ max-width:var(--container); margin:0 auto; padding:0 22px; }
+@media (max-width:520px){ .container{ padding:0 16px; } }
+.section{ padding:120px 0; }
+.section-muted{ background:var(--bg2); }
+.hidden{ display:none !important; }
+.stack{ display:flex; flex-direction:column; gap:22px; }
+.narrow{ max-width:860px; margin:0 auto; }
+.icon{ display:flex; align-items:center; justify-content:center; line-height:0; }
+.icon svg{ display:block; }
+
+/* TYPO */
+.h1{ font-size:clamp(44px,5vw,76px); line-height:1.02; letter-spacing:-0.02em; font-weight:900; }
+.h2{ font-size:clamp(32px,3.2vw,48px); line-height:1.08; letter-spacing:-0.02em; font-weight:850; }
+.h3{ font-size:28px; font-weight:900; letter-spacing:-0.01em; }
+.h4{ font-size:20px; font-weight:900; }
+.p-lg{ font-size:20px; color:var(--muted); max-width:65ch; }
+.kicker{ font-size:12px; text-transform:uppercase; letter-spacing:.18em; font-weight:900; color:var(--muted2); }
+.prose{ display:flex; flex-direction:column; gap:12px; color:var(--muted); max-width:72ch; }
+.prose p{ font-size:18px; }
+.prose .lead{ font-weight:800; color:color-mix(in srgb,var(--text) 88%,transparent); font-size:20px; }
+.italic{ font-style:italic; }
+.mt-6{ margin-top:16px; }
+.dash-list p{ margin-top:10px; }
+.dash-list p:first-child{ margin-top:0; }
+
+/* BUTTONS */
+.btn{ border-radius:999px; padding:14px 22px; font-weight:900; cursor:pointer; border:1px solid transparent; transition:transform .15s ease,opacity .2s ease,background .2s ease,border-color .2s ease; display:inline-flex; align-items:center; justify-content:center; gap:10px; line-height:1; }
+.btn:active{ transform:translateY(1px); }
+.btn-primary{ background:var(--text); color:var(--bg); }
+.btn-primary:hover{ opacity:.92; }
+.btn-outline{ background:transparent; border-color:var(--border2); color:var(--text); }
+.btn-outline:hover{ background:var(--panel2); }
+.btn-sm{ padding:10px 16px; font-size:14px; }
+.icon-btn{ width:40px; height:40px; border-radius:999px; background:transparent; border:1px solid var(--border2); color:var(--text); cursor:pointer; display:grid; place-items:center; transition:background .2s ease,transform .15s ease; }
+.icon-btn:hover{ background:var(--panel2); }
+.icon-btn:active{ transform:translateY(1px); }
+
+/* ENTRANCE */
+.entrance{ min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; padding:40px 0; overflow:hidden; }
+.entrance::before{ content:""; position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.03); }
+html.theme-light .entrance::before{ background-image:url("entry-light.png"); filter:brightness(1.08) contrast(1.06) saturate(1.02); }
+html.theme-dark .entrance::before{ background-image:url("entry-dark.png"); filter:brightness(0.98) contrast(1.18) saturate(1.06); }
+.entrance::after{ display:none !important; }
+.entrance-inner{ text-align:center; padding:0 18px; position:relative; z-index:2; }
+.sig-wrap{ width:290px; height:290px; margin:175px auto 10px; color:var(--text); filter:drop-shadow(0 18px 34px rgba(0,0,0,.22)); }
+.sig-svg{ width:100%; height:100%; }
+.sig-path{ stroke-dasharray:2000; stroke-dashoffset:2000; animation:draw 7s ease forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+.fade-in{ opacity:0; transform:translateY(16px); animation:fadeIn 2.5s ease forwards; }
+.fade-in-enter{ opacity:0; transform:translateY(16px); animation:fadeIn 2.5s ease forwards; animation-delay:1.35s; }
+@keyframes fadeIn{ to{ opacity:1; transform:translateY(0); } }
+.entrance-theme{ position:absolute; top:24px; right:24px; z-index:3; }
+.entrance-title{ margin-top:48px; font-size:clamp(56px,6vw,96px); line-height:1.02; letter-spacing:-0.03em; font-weight:950; text-shadow:0 18px 42px rgba(0,0,0,.36); }
+html.theme-light .entrance-title{ text-shadow:0 14px 34px rgba(0,0,0,.18); }
+.entrance-actions{ margin-top:16px; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
+.sound-toggle{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 22px; border-radius:999px; border:1px solid transparent; background:var(--text); color:var(--bg); font-weight:900; cursor:pointer; transition:transform .15s ease,background .2s ease,border-color .2s ease; line-height:1; }
+.sound-toggle:hover{ opacity:.92; }
+.sound-toggle:active{ transform:translateY(1px); }
+.sound-dot{ width:10px; height:10px; border-radius:999px; background:#2fe36a; box-shadow:0 0 0 6px rgba(47,227,106,.12); }
+.sound-toggle.is-off .sound-dot{ background:#ff4d4d; box-shadow:0 0 0 6px rgba(255,77,77,.12); }
+
+/* NAV */
+.nav{ position:fixed; top:0; width:100%; height:var(--navH); z-index:1000; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); }
+.nav-inner{ height:var(--navH); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand{ background:none; border:none; cursor:pointer; font-weight:950; font-size:22px; color:var(--text); }
+.nav-links{ display:none; align-items:center; gap:18px; }
+.nav-link{ background:none; border:none; cursor:pointer; color:var(--muted2); font-weight:850; transition:color .2s ease,transform .15s ease; }
+.nav-link:hover{ color:var(--text); transform:translateY(-1px); }
+.nav-link.active{ color:var(--text); }
+.nav-mobile-btn{ display:grid; }
+.mobile-menu{ border-top:1px solid var(--border); background:color-mix(in srgb,var(--bg) 94%,transparent); }
+.mobile-menu-inner{ padding:16px 18px 20px; display:flex; flex-direction:column; gap:6px; }
+.mobile-link{ width:100%; text-align:left; padding:14px 10px; background:none; border:none; cursor:pointer; color:var(--text); font-weight:850; border-radius:12px; }
+.mobile-link:hover{ background:var(--panel2); }
+.mobile-link.strong{ font-weight:950; }
+.theme-row{ display:flex; align-items:center; gap:10px; }
+@media (min-width:768px){ .nav-links{ display:flex; } .nav-mobile-btn{ display:none; } }
+
+/* HERO */
+.hero{ min-height:90vh; padding-top:calc(var(--navH) + 70px); display:flex; align-items:center; }
+.hero-split-inner{ display:grid; grid-template-columns:1fr; gap:34px; align-items:center; }
+@media (min-width:980px){ .hero-split-inner{ grid-template-columns:1.1fr .9fr; gap:70px; } }
+.hero-kicker{ font-size:11px; text-transform:uppercase; letter-spacing:.22em; font-weight:900; color:var(--muted2); margin-bottom:18px; }
+.hero-sub{ font-size:18px; color:var(--muted2); margin-top:12px; max-width:44ch; }
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.hero-photo{ border-radius:26px; border:1px solid var(--border); background:var(--panel2); overflow:hidden; box-shadow:var(--shadow); height:520px; display:grid; place-items:center; position:relative; }
+.hero-photo img{ width:100%; height:100%; object-fit:cover; }
+.hero-photo::after{ content:""; position:absolute; inset:0; border-radius:26px; background: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.32) 100%); pointer-events:none; }
+html.theme-light .hero-photo::after{ background: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.14) 100%); }
+.missing-note{ position:absolute; inset:0; display:grid; place-items:center; color:var(--muted2); font-weight:950; text-align:center; padding:18px; background:radial-gradient(600px 300px at 50% 20%,color-mix(in srgb,var(--panel) 45%,transparent),transparent); }
+
+/* ABOUT GRID */
+.about-grid2{ display:grid; grid-template-columns:1fr; gap:18px; align-items:stretch; }
+@media (min-width:980px){ .about-grid2{ grid-template-columns:1.15fr .85fr; gap:18px 22px; } }
+.about-text{ padding:28px; }
+.about-photoWrap{ display:flex; }
+.about-photo{ width:100%; border-radius:26px; border:1px solid var(--border); background:var(--panel2); overflow:hidden; box-shadow:var(--shadow); height:520px; display:grid; place-items:center; position:relative; }
+@media (max-width:979px){ .about-photo{ height:420px; } }
+.about-photo img{ width:100%; height:100%; object-fit:cover; }
+@media (min-width:980px){ .about-photoWrap{ height:100%; } .about-photo{ height:100%; } }
+
+/* Cards / Panels */
+.card,.panel{ border-radius:var(--radius2); background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; transition:transform .22s ease,border-color .22s ease,background .22s ease; }
+.card:hover,.panel:hover{ transform:translateY(-3px); border-color:var(--border2); background:color-mix(in srgb,var(--panel) 86%,transparent); }
+.card{ padding:22px; }
+.panel{ padding:28px; }
+.card-text{ color:var(--muted); font-size:16px; }
+.panel-text{ margin-top:14px; color:var(--muted); font-size:17px; }
+.mini-card{ padding:0; height:100%; display:flex; flex-direction:column; }
+.equal-card{ height:100%; }
+.mini-card-top{ padding:16px 18px 10px; border-bottom:1px solid var(--border); background:color-mix(in srgb,var(--panel2) 75%,transparent); }
+.mini-title{ font-weight:950; font-size:16px; }
+.mini-sub{ color:var(--muted2); font-weight:850; font-size:13px; margin-top:2px; }
+.mini-body{ padding:14px 18px 18px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+.mini-photo,.mini-art{ aspect-ratio:4/3; height:auto; background:var(--panel2); border-top:1px solid var(--border); display:grid; place-items:center; position:relative; overflow:hidden; }
+.mini-photo img,.mini-art img{ width:100%; height:100%; object-fit:cover; }
+
+/* About bottom 3-card row */
+.about-underRow{ display:grid; grid-template-columns:1fr; gap:18px; }
+@media (min-width:640px){ .about-underRow{ grid-template-columns:repeat(3,1fr); } }
+
+.music-row{ display:flex; align-items:center; justify-content:flex-start; gap:12px; margin-top:14px; }
+.music-status{ color:var(--muted2); font-size:14px; font-weight:850; }
+
+/* PROJECTS */
+.project-card{ border-radius:var(--radius2); background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; display:grid; grid-template-columns:1fr; }
+@media (min-width:860px){ .project-card{ grid-template-columns:1fr 1.1fr; } }
+.project-media{ min-height:240px; background:var(--panel2); border-bottom:1px solid var(--border); position:relative; }
+@media (min-width:860px){ .project-media{ border-right:1px solid var(--border); border-bottom:none; } }
+.project-media img{ width:100%; height:100%; object-fit:cover; }
+.project-body{ padding:22px; }
+
+/* HOBBIES */
+.hobby-card{ border-radius:var(--radius2); background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; display:grid; grid-template-columns:1fr; }
+@media (min-width:860px){ .hobby-card{ grid-template-columns:1fr 1.2fr; } }
+.hobby-media{ min-height:260px; background:var(--panel2); position:relative; }
+.hobby-media img{ width:100%; height:100%; object-fit:cover; }
+.hobby-body{ padding:22px; }
+
+/* CONTACT */
+.contact{ text-align:center; }
+.contact .p-lg{ margin-left:auto; margin-right:auto; }
+.contact-grid{ margin-top:26px; display:grid; grid-template-columns:1fr; gap:16px; max-width:900px; margin-left:auto; margin-right:auto; }
+@media (min-width:820px){ .contact-grid{ grid-template-columns:repeat(3,1fr); gap:18px; } }
+.contact-card{ border-radius:var(--radius2); background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); padding:22px; text-align:center; transition:transform .18s ease,background .2s ease,border-color .2s ease; }
+.contact-card:hover{ transform:translateY(-2px); background:color-mix(in srgb,var(--panel) 86%,transparent); border-color:var(--border2); text-decoration:none; }
+.contact-title{ font-weight:950; font-size:18px; margin-bottom:6px; }
+.contact-sub{ color:var(--muted); font-size:15px; }
+.footer{ margin-top:36px; padding-top:24px; border-top:1px solid var(--border); color:var(--muted2); text-align:center; }
+
+/* SCROLL ANIMS */
+.anim{ opacity:0; }
+.visible{ opacity:1; }
+.slide-up.visible{ animation:slideUp .8s cubic-bezier(.2,.8,.2,1) forwards; }
+.slide-left.visible{ animation:slideLeft .8s cubic-bezier(.2,.8,.2,1) forwards; }
+@keyframes slideUp{ from{transform:translateY(28px);opacity:0;filter:blur(4px)} to{transform:translateY(0);opacity:1;filter:blur(0)} }
+@keyframes slideLeft{ from{transform:translateX(26px);opacity:0;filter:blur(4px)} to{transform:translateX(0);opacity:1;filter:blur(0)} }
+.project-media img,.hobby-media img,.hero-photo img,.about-photo img,.mini-photo img,.mini-art img{ backface-visibility:hidden; }
+
+/* STICKY PLAYER */
+.player{ position:fixed; left:0; right:0; bottom:14px; z-index:1200; display:flex; justify-content:center; pointer-events:none; opacity:0; transform:translateY(14px); transition:opacity .22s ease,transform .22s ease; }
+.player.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+.player-inner{ width:min(980px,calc(100vw - 28px)); display:grid; grid-template-columns:54px 1fr 120px; gap:12px; align-items:center; padding:12px 14px; border-radius:999px; border:1px solid var(--border); background:color-mix(in srgb,var(--bg) 78%,transparent); backdrop-filter:blur(14px); box-shadow:var(--shadow); }
+.player-left{ display:flex; align-items:center; justify-content:center; }
+.player-art{ width:46px; height:46px; border-radius:16px; object-fit:cover; border:1px solid var(--border); background:var(--panel2); }
+.player-mid{ display:flex; flex-direction:column; justify-content:center; }
+.player-title{ font-weight:950; font-size:13px; letter-spacing:-0.01em; }
+.player-meta{ margin-top:2px; color:var(--muted2); font-weight:900; font-size:12px; display:flex; align-items:center; gap:8px; }
+.player-meta .dot{ opacity:.75; }
+.player-seek{ width:100%; margin-top:10px; accent-color:color-mix(in srgb,var(--text) 86%,transparent); }
+.player-right{ display:flex; align-items:center; justify-content:flex-end; gap:10px; height:100%; }
+.pbtn{ width:46px; height:46px; border-radius:999px; border:1px solid var(--border2); background:transparent; color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; line-height:0; transition:background .2s ease,transform .15s ease; }
+.pbtn:hover{ background:var(--panel2); }
+.pbtn:active{ transform:translateY(1px); }
+.picon{ display:flex; align-items:center; justify-content:center; width:22px; height:22px; }
+.picon svg{ width:22px; height:22px; display:block; }
+
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .anim{ opacity:1; } .slide-up.visible,.slide-left.visible{ animation:none; } .fade-in,.fade-in-enter{ animation:none; opacity:1; transform:none; } }
+</style>
+</head>
+
+<body>
+  <!-- ENTRANCE -->
+  <div id="entrance" class="entrance">
+    <button class="icon-btn entrance-theme" id="entranceThemeBtn" aria-label="Toggle theme">
+      <span class="icon" data-icon="theme"></span>
+    </button>
+    <div class="entrance-inner">
+      <div class="sig-wrap" aria-hidden="true">
+        <svg viewBox="-80 -80 1184 1184" class="sig-svg">
+          <path pathLength="1000"
+            d="M 331.26197,824.63088 371.7887,155.0588 c 0,0 72.24331,680.14427 225.54007,676.62021 89.80868,-2.06457 125.42778,-266.4467 106.63548,-448.1971 C 690.67948,254.99784 644.03265,190.72664 597.32878,188.5374 536.27708,185.67561 476.33682,211.58499 359.89671,323.33387 309.24067,371.94905 182.44321,492.7134 183.25131,602.61488 185.01334,842.2512 984.05117,169.42509 932.11482,218.49195"
+            fill="none" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" class="sig-path" />
+        </svg>
+      </div>
+      <div class="entrance-copy fade-in" style="animation-delay:1.35s">
+        <h1 class="entrance-title">Nitin Addanki</h1>
+        <div class="entrance-actions fade-in-enter">
+          <button id="enterBtn" class="btn btn-primary">Enter Site</button>
+          <button class="sound-toggle" id="entranceSoundBtn" type="button" aria-label="Toggle sound preference">
+            <span class="sound-dot" aria-hidden="true"></span>
+            <span id="entranceSoundText">Sound on</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE -->
+  <div id="site" class="site hidden">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="container nav-inner">
+        <button class="brand" data-scroll="home">Nitin Addanki</button>
+        <div class="nav-links">
+          <button class="nav-link" data-scroll="home">Home</button>
+          <button class="nav-link" data-scroll="about">About</button>
+          <button class="nav-link" data-scroll="education">Education</button>
+          <button class="nav-link" data-scroll="projects">Projects</button>
+          <button class="nav-link" data-scroll="work">Work</button>
+          <button class="nav-link" data-scroll="hobbies">Hobbies</button>
+          <button class="nav-link" data-scroll="contact">Contact</button>
+          <a class="btn btn-outline btn-sm" href="Nitin_Addanki_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+            <span class="icon" data-icon="theme"></span>
+          </button>
+        </div>
+        <button class="icon-btn nav-mobile-btn" id="menuBtn" aria-label="Open menu">
+          <span class="icon" data-icon="menu"></span>
+        </button>
+      </div>
+      <div class="mobile-menu hidden" id="mobileMenu">
+        <div class="mobile-menu-inner container">
+          <button class="mobile-link" data-scroll="home">Home</button>
+          <button class="mobile-link" data-scroll="about">About</button>
+          <button class="mobile-link" data-scroll="education">Education</button>
+          <button class="mobile-link" data-scroll="projects">Projects</button>
+          <button class="mobile-link" data-scroll="work">Work</button>
+          <button class="mobile-link" data-scroll="hobbies">Hobbies</button>
+          <button class="mobile-link" data-scroll="contact">Contact</button>
+          <a class="mobile-link strong" href="Nitin_Addanki_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
+          <button class="mobile-link theme-row" id="mobileThemeBtn">
+            <span class="icon" data-icon="theme"></span>
+            <span id="themeLabel">Light Mode</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="section hero hero-split">
+      <div class="container hero-split-inner">
+        <div class="hero-left">
+          <p class="hero-kicker anim slide-up" data-animate>Strategy &amp; Entrepreneurship · Denver, CO</p>
+          <h1 class="h1 anim slide-up" data-animate>Live to learn.<br>Learn to live.</h1>
+          <p class="hero-sub anim slide-up" data-animate>Associate Sales Consultant at TriNet · CU Boulder grad</p>
+          <div class="cta-row anim slide-up" data-animate>
+            <button class="btn btn-primary" data-scroll="about">About Me</button>
+            <a class="btn btn-outline" href="Nitin_Addanki_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+          </div>
+        </div>
+        <div class="hero-right anim slide-left" data-animate>
+          <div class="hero-photo">
+            <img src="headshot.jpg" alt="Portrait of Nitin Addanki" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section section-muted">
+      <div class="container about-grid2">
+
+        <div class="about-text panel anim slide-up" data-animate>
+          <p class="kicker">About Me</p>
+          <h2 class="h2 mt-6">Creating value through authenticity</h2>
+          <div class="prose mt-6">
+            <p class="lead">My name is Nitin. It's like kitten with an N.</p>
+            <p>
+              I am a recent grad from CU Boulder with a degree in Strategy &amp; Entrepreneurship, and I'm starting my career as an Associate Sales Consultant in TriNet's Ascend Program, based in Denver.
+            </p>
+            <p>
+              I grew up in the suburbs of Chicago and spent most of my time being slandered for being a Packers fan. It wasn't easy being different but I learned to be authentic. I eventually carried this authenticity into my creative ventures and projects.
+            </p>
+            <p>
+              From snack businesses to art stores to videography, I've tried it all. Along the way, I've learned plenty of lessons, but one that stuck with me most is to keep pushing myself to fail, learn, and grow.
+            </p>
+            <p>
+              Longer term, my interests pull me toward sports, entertainment, and education — industries I care deeply about. But right now I'm focused on building the foundation: strong sales fundamentals, real relationships, and an understanding of what makes businesses actually work.
+            </p>
+            <p class="italic">
+              If you ever want to connect, collaborate, or just chat, feel free to reach out through my contact page or follow my socials :)
+            </p>
+          </div>
+        </div>
+
+        <div class="about-photoWrap anim slide-left" data-animate>
+          <div class="about-photo">
+            <img src="about-photo.jpg" alt="About photo" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+        </div>
+
+        <!-- Three mini cards: song / book / movie -->
+        <div class="about-underRow" style="grid-column:1 / -1">
+
+          <div class="anim slide-up" data-animate>
+            <div class="card mini-card equal-card">
+              <div class="mini-card-top">
+                <div class="mini-title">Song I keep coming back to</div>
+                <div class="mini-sub">Alphaville — Forever Young</div>
+              </div>
+              <div class="mini-photo">
+                <img src="song-photo.jpg" alt="Forever Young" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+                <div class="missing-note"></div>
+              </div>
+              <div class="mini-body">
+                <p class="card-text">
+                  I picked this up right after graduating, in that in-between feeling where you're excited but also a little nostalgic for what's behind you. Forever Young captures that perfectly. It's a reminder that growing up doesn't have to mean losing the part of you that still believes anything is possible.
+                </p>
+                <div class="music-row">
+                  <button id="musicToggle" class="btn btn-outline btn-sm" type="button">Pause</button>
+                  <span id="musicStatus" class="music-status">Playing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="anim slide-up" data-animate>
+            <div class="card mini-card equal-card">
+              <div class="mini-card-top">
+                <div class="mini-title">Book I'm reading</div>
+                <div class="mini-sub">Roxie Nafousi — Confidence</div>
+              </div>
+              <div class="mini-art">
+                <img src="book.jpg" alt="Book cover" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+                <div class="missing-note"></div>
+              </div>
+              <div class="mini-body">
+                <p class="card-text">
+                  I picked this up because I've been thinking about how much of growth comes down to the small habits and thought patterns we don't even notice. Confidence is about rewiring those, building the kind of self-belief that actually changes what you do and how you show up every day.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="anim slide-up" data-animate>
+            <div class="card mini-card equal-card">
+              <div class="mini-card-top">
+                <div class="mini-title">Movie I'd recommend</div>
+                <div class="mini-sub">Project Hail Mary</div>
+              </div>
+              <div class="mini-art">
+                <img src="movie.jpg" alt="Movie poster" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+                <div class="missing-note"></div>
+              </div>
+              <div class="mini-body">
+                <p class="card-text">
+                  Visually stunning and genuinely moving. What got me was the self-discovery, the unexpected friendship at the center of it, and the resilience of someone figuring everything out with nothing but curiosity and grit. One of the most beautiful stories I've seen in a long time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container narrow">
+        <div class="panel anim slide-up" data-animate>
+          <h3 class="h3">Education</h3>
+          <h4 class="h4 mt-6">CU Boulder</h4>
+          <p class="p-lg">Leeds School of Business — Strategy &amp; Entrepreneurship</p>
+          <p class="panel-text">
+            Through studying at Leeds, I've learned not only what business is, but how to build and grow one.
+            I developed a strong foundation across finance, marketing, and operations—so I can apply what I learn to real industries and companies.
+          </p>
+          <h4 class="h4 mt-6">Certifications</h4>
+          <div class="dash-list panel-text">
+            <p>— <strong>Google Digital Marketing &amp; E-Commerce:</strong> Campaign planning, SEO/SEM, analytics, e-commerce strategy</p>
+            <p>— <strong>HubSpot Social Media Strategy:</strong> Social campaigns, calendars, engagement systems</p>
+            <p>— <strong>HubSpot Content Marketing:</strong> Content that attracts, retains, converts (measurable)</p>
+          </div>
+          <h4 class="h4 mt-6">Leadership</h4>
+          <p class="panel-text">
+            <strong>Dale Carnegie:</strong> Leadership + communication training (confidence, persuasion, EQ). Awarded Most Valuable Leader.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section section-muted">
+      <div class="container narrow stack">
+        <div class="card anim slide-up" data-animate>
+          <h3 class="h3">Projects</h3>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img src="project-brer.jpg" alt="Br'er project preview" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">Br'er</h4>
+            <p class="card-text">
+              Br'er was a venture I built with a team — originally a class project that we committed to carrying all the way through. We developed a nicotine replacement device designed to help people transition away from addiction in a safer, more sustainable way. We validated demand through research, defined the core problem, and took it deep into prototyping and brand development.
+            </p>
+            <p class="card-text" style="margin-top:10px;">
+              The project culminated in a pitch to investors at the end of the program — an experience that sharpened how I communicate ideas under pressure and think about a business from the outside in.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img src="project-omframe.jpg" alt="OmFrame preview" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">OmFrame</h4>
+            <p class="card-text">
+              OmFrame was an online cultural art store I created and ran myself. I designed the artwork, built the Shopify site, and ran ads on Facebook and Pinterest to bring in customers. Although the business brought in some revenue, I realized that the product didn't provide enough value relative to cost, which limited growth. This experience taught me the importance of solving a real problem and having a clear value proposition before developing products.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-card anim slide-up" data-animate>
+          <div class="project-media">
+            <img src="project-snack.jpg" alt="Snack-A-Week preview" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="project-body">
+            <h4 class="h4">Snack A Week</h4>
+            <p class="card-text">
+              Snack A Week was a customizable snack box service that I started for parents to save time and money while providing snacks kids genuinely enjoyed. I sold over 500 ready-to-go snack boxes, partnered with schools, and donated boxes to a local food pantry. This was my first real experience running a business which pushed me to talk with customers, handle fulfillment and market products on my own. The biggest lesson I took away was to take initiative and learn along the way, rather than waiting for the perfect moment to start.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section">
+      <div class="container narrow stack">
+        <div class="panel anim slide-up" data-animate>
+          <h3 class="h3">Work Experience</h3>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">TriNet — Associate Sales Consultant, Ascend Program</h4>
+          <p class="panel-text">
+            TriNet is a leading HR solutions provider helping small and medium-sized businesses manage payroll, benefits, and compliance. I'm joining their Ascend Program — a structured early-career sales initiative that places recent graduates into real sales roles with mentorship, hands-on training, and cross-functional exposure from day one.
+          </p>
+          <p class="panel-text">
+            As an Associate Sales Consultant based in Denver, I'll support field sales teams through account research, strategic prospecting, and CRM management in Salesforce. The program is designed to develop the fundamentals of B2B consultative selling — a discipline I'm excited to build a career around.
+          </p>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Nordstrom Rack — Sales Experience Rep</h4>
+          <p class="panel-text">
+            Most recently, I worked at Nordstrom Rack as a Sales Experience Rep. My work included helping customers at checkout to provide a fast and friendly experience. I also worked with the back-of-house and floor teams to help keep the store running smoothly. A key part of the role involved offering Nordstrom credit cards, which gave me real hands-on sales experience. Over time, I learned how to communicate value effectively and became one of the top credit card sellers in the store.
+          </p>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Blonde Boutique — Marketing Intern</h4>
+          <p class="panel-text">
+            At Blonde Boutique, I worked in social media, web design, and e-commerce to help grow the brand's outreach. I created social media campaigns on Instagram, Facebook, and TikTok to boost visibility and engagement. On the website side, I updated product photos, descriptions, and stock levels on Shopify to improve the overall shopping experience. This role taught me how cohesiveness and appeal in branding create customer value and drive sales.
+          </p>
+          <a href="https://shopblondeboutique.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;color:var(--muted2);font-size:14px;">shopblondeboutique.com ↗</a>
+        </div>
+
+        <div class="panel anim slide-up" data-animate>
+          <h4 class="h4">Good Roots — Store Assistant</h4>
+          <p class="panel-text">
+            As a store assistant, I supported daily operations by managing inventory, fulfillment, and store organization. I created wholesale product catalogs and also redesigned the Squarespace website for better functionality to streamline processes for both customers and owners. This role gave me insight into the behind-the-scenes systems that keep businesses running smoothly.
+          </p>
+          <a href="https://shopgoodroots.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;color:var(--muted2);font-size:14px;">shopgoodroots.com ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies" class="section section-muted">
+      <div class="container narrow stack">
+        <div class="card anim slide-up" data-animate>
+          <h3 class="h3">Hobbies</h3>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img src="hobby-travel.jpg" alt="Travel" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Travel</h4>
+            <p class="card-text">
+              I love exploring new places and experiencing different cultures when I travel. I like to wander without a set plan or destination just to observe, learn, and take in the environment as it is. Traveling has shown me how big the world is and how much there is to learn from other people and ways of living. In the future, I hope to work in the education sector and support underprivileged communities abroad. Fun fact: one place I've always wanted to live is Hawai'i.
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img src="hobby-volleyball.jpg" alt="Volleyball" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Volleyball</h4>
+            <p class="card-text">
+              Volleyball has been a part of my life for the past seven years. I've played in club, school, and for fun, and each stage has given me something different. I've been fortunate enough to play on great teams, win a state championship, and finish second at nationals. Through the wins, losses, an ACL tear, and countless hours of practice, volleyball taught me resilience, teamwork, and how to show up for others. I hope to keep this sport in my life for as long as possible so I can stay active and continue meeting new communities.
+            </p>
+          </div>
+        </div>
+
+        <div class="hobby-card anim slide-up" data-animate>
+          <div class="hobby-media">
+            <img src="hobby-video.jpg" alt="Videography" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('is-missing');" />
+            <div class="missing-note"></div>
+          </div>
+          <div class="hobby-body">
+            <h4 class="h4">Videography</h4>
+            <p class="card-text">
+              When I was younger, I started making silly videos for family events and school projects, but over time I gained a genuine appreciation for filmmaking and the entertainment industry. I've worked on many video projects since then, and it's become one of my favorite creative outlets. One day if the opportunity comes, I'd love to create films or projects that inspire or impact others in a meaningful way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container contact">
+        <h2 class="h1 anim slide-up" data-animate>Let's connect</h2>
+        <p class="p-lg anim slide-up" data-animate>Feel free to reach out!</p>
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:addankinitin@gmail.com">
+            <div class="contact-title">Email</div>
+            <div class="contact-sub">addankinitin@gmail.com</div>
+          </a>
+          <a class="contact-card" href="tel:6307850001">
+            <div class="contact-title">Phone</div>
+            <div class="contact-sub">630-785-0001</div>
+          </a>
+          <a class="contact-card" href="https://linkedin.com/in/nitin-addanki" target="_blank" rel="noopener noreferrer">
+            <div class="contact-title">LinkedIn</div>
+            <div class="contact-sub"><strong>View profile</strong></div>
+          </a>
+        </div>
+        <footer class="footer">© 2026 Nitin Addanki</footer>
+      </div>
+    </section>
+
+    <!-- STICKY MUSIC PLAYER -->
+    <div class="player" id="player" aria-label="Music controls">
+      <div class="player-inner">
+        <div class="player-left">
+          <img class="player-art" src="album-cover.png" alt="Album cover" loading="lazy" decoding="async"
+               onerror="this.style.display='none';" />
+        </div>
+        <div class="player-mid">
+          <div class="player-title">Forever Young — Alphaville</div>
+          <div class="player-meta">
+            <span id="playerCur">0:00</span>
+            <span class="dot">•</span>
+            <span id="playerDur">--:--</span>
+          </div>
+          <input id="playerSeek" class="player-seek" type="range" min="0" max="1000" value="0" />
+        </div>
+        <div class="player-right">
+          <button class="pbtn" id="playerPlay" aria-label="Play/Pause"><span class="picon" id="playerPlayIcon"></span></button>
+          <button class="pbtn" id="playerMute" aria-label="Mute/Unmute"><span class="picon" id="playerMuteIcon"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgAudio" preload="auto" loop>
+    <source src="forever-young.mp3" type="audio/mpeg" />
+  </audio>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const entrance = document.getElementById("entrance");
+  const site = document.getElementById("site");
+  const enterBtn = document.getElementById("enterBtn");
+  const themeBtn = document.getElementById("themeBtn");
+  const entranceThemeBtn = document.getElementById("entranceThemeBtn");
+  const mobileThemeBtn = document.getElementById("mobileThemeBtn");
+  const themeLabel = document.getElementById("themeLabel");
+  const entranceSoundBtn = document.getElementById("entranceSoundBtn");
+  const entranceSoundText = document.getElementById("entranceSoundText");
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const bgAudio = document.getElementById("bgAudio");
+  const musicToggle = document.getElementById("musicToggle");
+  const musicStatus = document.getElementById("musicStatus");
+  const player = document.getElementById("player");
+  const playerInner = player?.querySelector(".player-inner");
+  const playerPlay = document.getElementById("playerPlay");
+  const playerPlayIcon = document.getElementById("playerPlayIcon");
+  const playerMute = document.getElementById("playerMute");
+  const playerMuteIcon = document.getElementById("playerMuteIcon");
+  const playerSeek = document.getElementById("playerSeek");
+  const playerCur = document.getElementById("playerCur");
+  const playerDur = document.getElementById("playerDur");
+
+  const icons = {
+    sun: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`,
+    moon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+    menu: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`,
+    x: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
+    play: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l12-7z"/></svg>`,
+    pause: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h5v14H6zM13 5h5v14h-5z"/></svg>`,
+    volume: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a9 9 0 0 1 0 12"/></svg>`,
+    mute: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6"/><path d="M17 9l6 6"/></svg>`
+  };
+
+  function paintIcons() {
+    document.querySelectorAll('[data-icon="menu"]').forEach(el => (el.innerHTML = icons.menu));
+    updateThemeIcons();
+  }
+  function isDark() { return html.classList.contains("theme-dark"); }
+  function updateThemeIcons() {
+    const icon = isDark() ? icons.sun : icons.moon;
+    document.querySelectorAll('[data-icon="theme"]').forEach(el => (el.innerHTML = icon));
+    if (themeLabel) themeLabel.textContent = isDark() ? "Light Mode" : "Dark Mode";
+  }
+  function setTheme(dark) {
+    html.classList.toggle("theme-dark", dark);
+    html.classList.toggle("theme-light", !dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+    updateThemeIcons();
+  }
+  function toggleTheme() { setTheme(!isDark()); }
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") setTheme(false); else setTheme(true);
+  paintIcons();
+
+  function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove("hidden");
+    const t = menuBtn?.querySelector('[data-icon="menu"]');
+    if (t) t.innerHTML = icons.x;
+    menuBtn?.setAttribute("aria-label", "Close menu");
+  }
+  function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add("hidden");
+    const t = menuBtn?.querySelector('[data-icon="menu"]');
+    if (t) t.innerHTML = icons.menu;
+    menuBtn?.setAttribute("aria-label", "Open menu");
+  }
+  menuBtn?.addEventListener("click", () => { mobileMenu.classList.contains("hidden") ? openMobileMenu() : closeMobileMenu(); });
+
+  function scrollToSection(id, closeMenu = true) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (closeMenu) closeMobileMenu();
+  }
+  document.querySelectorAll("[data-scroll]").forEach(btn => {
+    btn.addEventListener("click", () => scrollToSection(btn.getAttribute("data-scroll")));
+  });
+  themeBtn?.addEventListener("click", toggleTheme);
+  entranceThemeBtn?.addEventListener("click", toggleTheme);
+  mobileThemeBtn?.addEventListener("click", () => { toggleTheme(); closeMobileMenu(); });
+
+  let observer;
+  function setupObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+    }, { threshold: 0.14 });
+    document.querySelectorAll("[data-animate].anim").forEach(el => observer.observe(el));
+  }
+
+  const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+  const sections = ["home","about","education","projects","work","hobbies","contact"];
+  function setActiveSection(id) { navLinks.forEach(b => b.classList.toggle("active", b.getAttribute("data-scroll") === id)); }
+  let rafActive = 0;
+  function onScrollActive() {
+    if (rafActive) return;
+    rafActive = requestAnimationFrame(() => {
+      rafActive = 0;
+      let currentId = null;
+      for (const s of sections) {
+        const el = document.getElementById(s);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= 140) currentId = s;
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) currentId = "contact";
+      if (currentId) setActiveSection(currentId);
+    });
+  }
+  window.addEventListener("scroll", onScrollActive, { passive: true });
+
+  function formatTime(t) {
+    if (!Number.isFinite(t) || t < 0) return "0:00";
+    return `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+  }
+  function setPlayIcons(playing) {
+    if (playerPlayIcon) playerPlayIcon.innerHTML = playing ? icons.pause : icons.play;
+    if (musicToggle) musicToggle.textContent = playing ? "Pause" : "Play";
+    if (musicStatus) musicStatus.textContent = playing ? "Playing" : "Paused";
+  }
+  function setMuteIcon(muted) { if (playerMuteIcon) playerMuteIcon.innerHTML = muted ? icons.mute : icons.volume; }
+  function syncTimeUI() {
+    if (!bgAudio) return;
+    if (playerCur) playerCur.textContent = formatTime(bgAudio.currentTime);
+    const d = bgAudio.duration;
+    if (playerDur) playerDur.textContent = (Number.isFinite(d) && d > 0) ? formatTime(d) : "--:--";
+  }
+  function syncSeekUI() {
+    if (!bgAudio || !playerSeek) return;
+    const d = bgAudio.duration;
+    if (!Number.isFinite(d) || d <= 0) { playerSeek.disabled = true; playerSeek.value = "0"; return; }
+    playerSeek.disabled = false;
+    const max = Number(playerSeek.max || 1000);
+    playerSeek.value = String(Math.max(0, Math.min(max, Math.round((bgAudio.currentTime / d) * max))));
+  }
+  async function tryPlayMusic() { if (!bgAudio) return; try { await bgAudio.play(); } catch {} }
+  function togglePlay() { if (!bgAudio) return; bgAudio.paused ? tryPlayMusic() : bgAudio.pause(); }
+  function toggleMute() {
+    if (!bgAudio) return;
+    bgAudio.muted = !bgAudio.muted;
+    localStorage.setItem("muted", bgAudio.muted ? "1" : "0");
+    setMuteIcon(bgAudio.muted);
+    setEntranceSoundUI(bgAudio.muted);
+  }
+  function setEntranceSoundUI(isMuted) {
+    if (!entranceSoundBtn || !entranceSoundText) return;
+    entranceSoundBtn.classList.toggle("is-off", isMuted);
+    entranceSoundText.textContent = isMuted ? "Sound off" : "Sound on";
+  }
+  const savedMuted = localStorage.getItem("muted") === "1";
+  if (bgAudio) bgAudio.muted = savedMuted;
+  setMuteIcon(savedMuted);
+  setEntranceSoundUI(savedMuted);
+
+  entranceSoundBtn?.addEventListener("click", () => {
+    const nowMuted = !(localStorage.getItem("muted") === "1");
+    localStorage.setItem("muted", nowMuted ? "1" : "0");
+    if (bgAudio) bgAudio.muted = nowMuted;
+    setMuteIcon(nowMuted);
+    setEntranceSoundUI(nowMuted);
+  });
+
+  musicToggle?.addEventListener("click", togglePlay);
+  playerPlay?.addEventListener("click", togglePlay);
+  playerMute?.addEventListener("click", toggleMute);
+  playerSeek?.addEventListener("input", (e) => {
+    if (!bgAudio) return;
+    const d = bgAudio.duration;
+    if (!Number.isFinite(d) || d <= 0) return;
+    const max = Number(playerSeek.max || 1000);
+    bgAudio.currentTime = Math.max(0, Math.min(d, (Number(e.target.value) / max) * d));
+  });
+  bgAudio?.addEventListener("play", () => setPlayIcons(true));
+  bgAudio?.addEventListener("pause", () => setPlayIcons(false));
+  bgAudio?.addEventListener("timeupdate", () => { syncTimeUI(); syncSeekUI(); });
+  bgAudio?.addEventListener("loadedmetadata", () => { syncTimeUI(); syncSeekUI(); });
+  bgAudio?.addEventListener("durationchange", () => { syncTimeUI(); syncSeekUI(); });
+
+  let hideTimer = null, hoveringPlayer = false, userInteracting = false;
+  function showPlayerTemporarily() {
+    if (!player || site.classList.contains("hidden")) return;
+    player.classList.add("show");
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => { if (!hoveringPlayer && !userInteracting) player.classList.remove("show"); }, 1100);
+  }
+  let rafPlayer = 0;
+  window.addEventListener("scroll", () => {
+    if (rafPlayer) return;
+    rafPlayer = requestAnimationFrame(() => { rafPlayer = 0; showPlayerTemporarily(); });
+  }, { passive: true });
+  const setInteraction = (val) => { userInteracting = val; if (val) player?.classList.add("show"); else showPlayerTemporarily(); };
+  playerInner?.addEventListener("mouseenter", () => { hoveringPlayer = true; player.classList.add("show"); if (hideTimer) clearTimeout(hideTimer); });
+  playerInner?.addEventListener("mouseleave", () => { hoveringPlayer = false; showPlayerTemporarily(); });
+  playerInner?.addEventListener("focusin", () => setInteraction(true));
+  playerInner?.addEventListener("focusout", () => setInteraction(false));
+  playerSeek?.addEventListener("pointerdown", () => setInteraction(true));
+  window.addEventListener("pointerup", () => setInteraction(false));
+
+  enterBtn?.addEventListener("click", async () => {
+    entrance.classList.add("hidden");
+    site.classList.remove("hidden");
+    setupObserver();
+    setTimeout(() => scrollToSection("home", false), 50);
+    onScrollActive();
+    const mutedPref = localStorage.getItem("muted") === "1";
+    if (bgAudio) { bgAudio.muted = mutedPref; bgAudio.volume = 0.9; setMuteIcon(mutedPref); setPlayIcons(!bgAudio.paused); }
+    await tryPlayMusic();
+    showPlayerTemporarily();
+  });
+
+  if (!site.classList.contains("hidden")) {
+    setupObserver(); onScrollActive(); syncTimeUI(); syncSeekUI();
+  } else {
+    player?.classList.remove("show");
+  }
+})();
+</script>
+</body>
+</html>
